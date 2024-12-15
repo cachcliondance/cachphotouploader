@@ -1,0 +1,76 @@
+:root {
+    --dark-red: #672714;
+    --green-grey: #bcb19b;
+    --light-red: #aa3d1d;
+    --eggshell: #f3efe7;
+    --light-beige: #f1e3c8;
+    --dark-green: #393d32;
+    --medium-green: #676758;
+    --light-green: #95907d;
+  }
+  
+  @font-face {
+    font-family: "Futura";
+    src: url("assets/FuturaBookfont.ttf");
+  }
+  
+  .nav-bar {
+    top: 0;
+    left: 0;
+  }
+  
+  .navbar-container {
+    font-family: "Futura";
+    display: flex;
+    justify-content: center;
+    background-color: var(--dark-green);
+    padding: 1.5rem;
+  }
+  
+  .navbar-logo p {
+    color: var(--light-beige);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .upload-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  
+  /* Extra small devices (phones, less than 576px) */
+  @media (max-width: 575px) {
+    .navbar-logo p {
+      font-size: 10px;
+      width: 100%;
+    }
+
+  }
+  
+  /* Small devices (tablets, 576px and up) */
+  @media (min-width: 576px) and (max-width: 829px) {
+    .navbar-logo p {
+      font-size: 10px;
+    }
+  
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) and (max-width: 1599px) {
+    .navbar-logo p {
+      font-size: 16px;
+    }
+  
+  }
+  
+  /* Extra-extra large devices (4K screens, 1600px and up) */
+  @media (min-width: 1600px) {
+    /* Styles for extra-large screens and high-res monitors */
+  }
+  
