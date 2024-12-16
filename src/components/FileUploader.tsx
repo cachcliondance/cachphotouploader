@@ -32,19 +32,43 @@ const FileUploader = () => {
       }
 
       const data = await response.json();
-      setMessage(`Upload successful! File saved at: ${data.filePath}`);
+      setMessage('Upload successful!');
     } catch (error) {
       console.error('Upload error:', error);
-      setMessage('Failed to upload file. Please try again.');
+      setMessage('Failed to upload photo. Please try again.');
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch("https://www.cachcliondragon.org/api/clear-uploads", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to clear gallery.");
+      }
+
+      const data = await response.json();
+      setMessage(data.message); 
+    } catch (error) {
+      console.error("Error clearing photos:", error);
+      setMessage("An error occurred.");
     }
   };
 
   return (
     <div className='upload-container'>
-      <h2 className='my-3'>Upload a File</h2>
+      <h2 className='my-3'>Upload a Photo</h2>
       <input className='mb-3' type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload} disabled={!file}>
+      <button className='mb-3' onClick={handleUpload} disabled={!file}>
         Upload
+      </button>
+      <button onClick={handleDelete}>
+        Delete all photos
       </button>
       {message && <p>{message}</p>}
     </div>
