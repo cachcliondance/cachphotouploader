@@ -30,8 +30,6 @@ const FileUploader = () => {
       if (!response.ok) {
         throw new Error(`Failed to upload: ${response.statusText}`);
       }
-
-      const data = await response.json();
       setMessage('Upload successful!');
     } catch (error) {
       console.error('Upload error:', error);
