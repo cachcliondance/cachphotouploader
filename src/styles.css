@@ -43,7 +43,25 @@
     flex-direction: column;
   }
 
+  .photo-preview-container {
+    margin-top: 20px;
+  }
   
+  .photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .photo-preview {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }  
+
   /* Extra small devices (phones, less than 576px) */
   @media (max-width: 575px) {
     .navbar-logo p {
