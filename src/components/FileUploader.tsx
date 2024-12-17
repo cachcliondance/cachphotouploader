@@ -2,24 +2,22 @@ import React, { useState } from 'react';
 import '../styles.css';
 
 const FileUploader = () => {
-  const [files, setFiles] = useState<File[]>([]); // State to store multiple files
-  const [previewUrls, setPreviewUrls] = useState<string[]>([]); // State for image previews
+  const [files, setFiles] = useState<File[]>([]); 
+  const [previewUrls, setPreviewUrls] = useState<string[]>([]); 
   const [message, setMessage] = useState<string | null>(null);
 
   // Handle file selection
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      const selectedFiles = Array.from(e.target.files); // Convert FileList to array
-      setFiles(selectedFiles); // Store files
+      const selectedFiles = Array.from(e.target.files); 
+      setFiles(selectedFiles); 
 
-      // Generate preview URLs for images
       const urls = selectedFiles.map((file) => URL.createObjectURL(file));
-      setPreviewUrls(urls); // Store temporary URLs
-      setMessage(null); // Clear any previous messages
+      setPreviewUrls(urls); 
+      setMessage(null); 
     }
   };
 
-  // Handle upload
   const handleUpload = async () => {
     if (files.length === 0) {
       setMessage("Please select files before uploading.");
@@ -28,7 +26,6 @@ const FileUploader = () => {
 
     const formData = new FormData();
 
-    // Append each file to the FormData
     files.forEach((file) => {
       formData.append(`photos`, file);
     });
@@ -51,7 +48,11 @@ const FileUploader = () => {
     }
   };
 
-  // Handle delete
+  const clearSelection = () => {
+    setFiles([]); // Clear files
+    setPreviewUrls([]); // Clear previews
+  }
+
   const handleDelete = async () => {
     try {
       const response = await fetch("https://www.cachcliondragon.org/api/clear-uploads", {
@@ -77,7 +78,6 @@ const FileUploader = () => {
     <div className='upload-container'>
       <h2 className='my-3'>Upload Photos</h2>
       
-
       <input
         className='mb-3'
         type="file"
@@ -89,8 +89,11 @@ const FileUploader = () => {
       <button className='mb-3' onClick={handleUpload} disabled={files.length === 0}>
         Upload
       </button>
+      <button className='mb-3' onClick={clearSelection} disabled={files.length === 0}>
+        Clear Selection
+      </button>
       <button onClick={handleDelete}>
-        Delete all photos
+        Delete All Photos in Gallery
       </button>
 
       {message && <p>{message}</p>}
