@@ -47,20 +47,44 @@
     margin-top: 20px;
   }
   
-  .photo-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .photo-preview {
+  /* .photo-preview {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border: 2px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }  
+  }   */
+
+  .photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .photo-item {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .photo-preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .delete-photo-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+  }
+  
 
   /* Extra small devices (phones, less than 576px) */
   @media (max-width: 575px) {
